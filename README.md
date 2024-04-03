@@ -1,17 +1,13 @@
-# Capstone Project
-We are deciding between a ReactNative Expo project or a Nextjs project.
+# Capstone Project - Helldivers 2 App
+A ReactNative Expo project for visualizing information on the Galactic War.
 
 Planned features
 - Fullstack application
 - Modern minimalist UI
 - Dark mode (theme switching)
-- Payment
-- Authentication
-- Web domain
 - Animation
-- Backend
 
-## Group Members
+## Collaborators
   - Casey Kneip
   - Grant Nelson
   - Aryan Swaminath
