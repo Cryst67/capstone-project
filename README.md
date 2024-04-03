@@ -13,5 +13,5 @@ Planned features
   - Aryan Swaminath
 
 ## Design Concepts
-1. [Galactic Map (Home Page)](./assets/home_design.png)
-2. [Wiki Page](./assets/wiki_design.png)
+1. ![Galactic Map (Home Page)](./assets/home_design.png)
+2. ![Wiki Page](./assets/wiki_design.png)
