@@ -9,7 +9,7 @@ Planned features
 
 ## Collaborators
   - Casey Kneip
-  - Grant Nelson
+  - Grant Nelson !
   - Aryan Swaminath
 
 ## Design Concepts
