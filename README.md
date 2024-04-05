@@ -11,6 +11,7 @@ Planned features
   - Casey Kneip
   - Grant Nelson !
   - Aryan Swaminath
+  Hello Cryst!
 
 ## Design Concepts
 1. ![Galactic Map (Home Page)](./assets/home_design.png)
