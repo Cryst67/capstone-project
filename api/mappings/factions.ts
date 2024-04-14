@@ -3,3 +3,5 @@ const Factions = {
   2: 'Terminids',
   3: 'Automatons',
 };
+
+export default Factions;
