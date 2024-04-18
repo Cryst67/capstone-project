@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Planets from './api/mappings/planets'; // Import the Planets mapping
 import Map from './components/map';
+import { Stratagem } from './api/mappings/statagems';
+import StratagemComponent from './components/stratagems';
 
 interface PlanetStatus {
   index: keyof typeof Planets;
@@ -16,7 +18,8 @@ const App = () => {
     <ScrollView>
       <View style={styles.container}>
       <Map />
-      <PlanetInfo />
+      {/* <PlanetInfo /> */}
+      < StratagemComponent />
       </View>
     </ScrollView>
   );
@@ -57,6 +60,16 @@ const PlanetInfo = () => {
         </View>
       ))}
     </View>
+  );
+};
+
+const StratagemScreen = () => {
+  return (
+    <ScrollView>
+      {Object.values(Stratagem).map((stratagem, index) => (
+        <StratagemComponent key={index} {...stratagem} />
+      ))}
+    </ScrollView>
   );
 };
 
