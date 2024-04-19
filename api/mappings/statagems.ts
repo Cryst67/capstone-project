@@ -1,7 +1,14 @@
-export const Stratagem = {
+
+interface StratagemEntry {
+  name: string;
+  cost?: number;  //now cost is optional 
+  sequence: string[];
+  content: string;
+}
+export const Stratagem: Record<string, StratagemEntry> = {
     MachineGun: {
       name: "Machine Gun",
-      cost: 0,
+      cost: 2000,
       sequence: ["down", "left", "down", "up", "right"],
       content: `
         <p>Behold, soldier, the mighty MG-43 Machine Gun - a weapon fit for heroes and hotheads alike. This trusty companion is your ticket to glory on the battlefield, but beware, for with great power comes great responsibility (and a hefty kickback).</p>
@@ -447,7 +454,6 @@ export const Stratagem = {
     },
     Reinforce: {
       name: "Reinforce",
-      cost: null,
       sequence: ["up", "down", "right", "left", "up"],
       content: `
         <p>Amidst the chaos of battle, amidst the thunderous roar of conflict, we stand as one, united in purpose, bound by the sacred oath of liberty's champions. For every Helldiver who has fallen, for every comrade lost in the crucible of war, their memory shall be etched in the annals of heroism, their valor a beacon that guides us through the darkest of nights.</p>
@@ -457,7 +463,6 @@ export const Stratagem = {
     },
     SOSBeacon: {
       name: "SOS Beacon",
-      cost: null,
       sequence: ["up", "down", "right", "up"],
       content: `
         <p>The SOS Beacon is used to signal the needs for reinforcements, allow other Helldivers to join your cause. As its signal pierces the heavens, it serves as a testament to the unyielding spirit of Helldivers, reaffirming our commitment to confront tyranny head-on and triumph against all odds, together.</p>
@@ -465,7 +470,6 @@ export const Stratagem = {
     },
     Resupply: {
       name: "Resupply",
-      cost: null,
       sequence: ["down", "down", "up", "right"],
       content: `
   
@@ -473,7 +477,6 @@ export const Stratagem = {
     },
     SuperEarthFlag: {
       name: "Super Earth Flag",
-      cost: null,
       sequence: ["down", "up", "down", "up"],
       content: `
         <p>Bearing the emblem of Super Earth, the beacon of democracy and freedom across the galaxy, the Super Earth Flag is a symbol of our unwavering resolve and steadfast commitment to our cause. When called down to claim a particular location, it serves as a rallying point for all Helldivers, a bastion of liberty amidst the chaos of war. As its colors unfurl upon the battlefield, they inspire hope and unity, reminding us of the values we hold dear and the sacrifices we make in the name of justice and democracy.</p>
@@ -481,7 +484,6 @@ export const Stratagem = {
     },
     UploadData: {
       name: "Upload Data",
-      cost: null,
       sequence: ["left", "right", "up", "up", "up"],
       content: `
         <p>Uploading data...</p>
@@ -489,7 +491,6 @@ export const Stratagem = {
     },
     Hellbomb: {
       name: "Hellbomb",
-      cost: null,
       sequence: ["down", "up", "left", "down", "up", "right", "down", "up"],
       content: `
         <p>The "Hellbomb" is a formidable weapon utilized by Helldivers to obliterate enemy encampments with overwhelming force. Upon deployment, it can be activated to unleash a massive explosion, creating a devastating blast radius that annihilates anything in its path. This destructive capability makes it an indispensable tool for clearing out entrenched enemy positions and disrupting hostile operations. However, its potency comes with a significant risk - Helldivers must evacuate the area swiftly to avoid being caught in the cataclysmic aftermath.</p>
