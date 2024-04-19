@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Planets from './api/mappings/planets'; // Import the Planets mapping
 import Map from './components/map';
-import { Stratagem } from './api/mappings/statagems';
+import { Stratagem } from './api/mappings/stratagems';
 import StratagemComponent from './components/stratagems';
 
 interface PlanetStatus {
