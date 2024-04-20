@@ -9,13 +9,13 @@ import {
 
 import { Stratagem } from '../api/data/stratagems'; // Import the Stratagem data
 import colors from '../constants/colors';
-
+import { useTheme } from '../contexts/ThemeContext';
 import CategorySelector from './category';
 import Bots from './Bots';
 import Bugs from './Bugs';
 
 const Stratagems = () => {
-  const theme = { mode: 'dark' };
+  const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
   const [selectedCategory, setSelectedCategory] = useState('Guns');

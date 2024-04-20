@@ -5,11 +5,11 @@ import colors from '../../constants/colors';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import CustomTab from './CustomTab';
-
+import { useTheme } from '../../contexts/ThemeContext';
 const Tab = createBottomTabNavigator();
 
 const Layout = () => {
-  const theme = { mode: 'dark' };
+  const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
   return (

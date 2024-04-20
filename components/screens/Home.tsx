@@ -3,13 +3,13 @@ import { StyleSheet } from 'react-native';
 
 import Stratagems from '../Stratagems';
 import Map from '../Map';
-
+import { useTheme } from '../../contexts/ThemeContext';
 import colors from '../../constants/colors';
 
 const Tab = createMaterialTopTabNavigator();
 
 const Home = () => {
-  const theme = { mode: 'dark' };
+  const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
   return (
@@ -17,7 +17,7 @@ const Home = () => {
       style={{ backgroundColor: activeColors.backgroundColor }}
       screenOptions={{
         tabBarGap: 5,
-        tabBarActiveTintColor: 'white',
+        tabBarActiveTintColor: activeColors.textColor,
         tabBarLabelStyle: styles.tabBarLabel,
         tabBarStyle: { backgroundColor: activeColors.backgroundColor },
         tabBarIndicatorStyle: {

@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 import { Terminids } from '../api/data/terminids'; // Import the Bugs data
 import colors from '../constants/colors';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Bugs = () => {
-  const theme = { mode: 'dark' };
+  const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
   const [activeBug, setActiveBug] = useState(null);

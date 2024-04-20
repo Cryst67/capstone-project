@@ -2,9 +2,9 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { BlurView } from 'expo-blur';
 import colors from '../../constants/colors';
-
+import { useTheme } from '../../contexts/ThemeContext';
 const CustomTab = ({ state, descriptors, navigation }: BottomTabBarProps) => {
-  const theme = { mode: 'dark' };
+  const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
   return (
@@ -18,8 +18,8 @@ const CustomTab = ({ state, descriptors, navigation }: BottomTabBarProps) => {
       }}
     >
       <BlurView
-        tint='dark' // or "light"
-        intensity={40} // from 0 to 100
+        tint={theme.mode}
+        intensity={40}
         style={StyleSheet.absoluteFill}
       />
       {state.routes.map((route, index) => {

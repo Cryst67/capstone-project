@@ -9,9 +9,10 @@ import {
 
 import { Automatons } from '../api/data/automatons'; // Import the Automatons data
 import colors from '../constants/colors';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Bots = () => {
-  const theme = { mode: 'dark' };
+  const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
   const [activeRobot, setActiveRobot] = useState(null);

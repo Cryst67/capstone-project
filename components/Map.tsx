@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Planets from '../api/mappings/planets'; // Import the Planets mapping
 import colors from '../constants/colors';
-
+import { useTheme } from '../contexts/ThemeContext';
 interface PlanetInfo {
   index: keyof typeof Planets;
   settingsHash: number;
@@ -18,7 +18,7 @@ interface PlanetInfo {
 }
 
 const Map = () => {
-  const theme = { mode: 'dark' };
+  const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
   const [warInfo, setWarInfo] = useState<any>({});

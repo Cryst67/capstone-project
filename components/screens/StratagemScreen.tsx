@@ -2,9 +2,9 @@ import { ScrollView } from 'react-native';
 import Stratagems from '../Stratagems';
 import { Stratagem } from '../../api/data/stratagems';
 import colors from '../../constants/colors';
-
+import { useTheme } from '../../contexts/ThemeContext';
 const StratagemScreen = () => {
-  const theme = { mode: 'dark' };
+  const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
   return (
