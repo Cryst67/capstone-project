@@ -4,7 +4,7 @@ type RobotData = {
     tactics: string;
 };
 
-export const Terminids: Record<string, RobotData> = {
+export const Automatons: Record<string, RobotData> = {
     Trooper: {
         name: `Trooper`,
         appearance: `Troopers epitomize the heartless fusion of man and machine, a grotesque testament to the Automaton faction's 
