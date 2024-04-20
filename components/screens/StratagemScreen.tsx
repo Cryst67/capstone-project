@@ -12,3 +12,4 @@ const StratagemScreen = () => {
     </ScrollView>
   );
 };
+//this is unreferenced, do we need it? 
