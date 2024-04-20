@@ -44,6 +44,7 @@ const App = () => {
               />
             </Tab.Navigator>
             <BottomSheet
+              backgroundStyle={{ backgroundColor: colors.dark.backgroundColor }}
               enableOverDrag={false}
               handleIndicatorStyle={{ height: 0 }}
               ref={bottomSheetRef}
