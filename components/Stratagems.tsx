@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 import { Stratagem } from '../api/data/stratagems'; // Import the Stratagem data
+import colors from '../constants/colors';
 
 const Stratagems = () => {
   return (
@@ -25,6 +26,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.dark.backgroundColor,
   },
   title: {
     fontSize: 18,
@@ -42,15 +44,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 5,
+    color: colors.dark.textColor,
   },
   stratagemCost: {
     marginBottom: 5,
+    color: colors.dark.textColor,
   },
   stratagemSequence: {
     marginBottom: 5,
+    color: colors.dark.textColor,
   },
   stratagemContent: {
     marginBottom: 5,
+    color: colors.dark.textColor,
   },
 });
 

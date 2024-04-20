@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import Planets from '../api/mappings/planets'; // Import the Planets mapping
+import colors from '../constants/colors';
 
 interface PlanetInfo {
   index: keyof typeof Planets;
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 200,
+    backgroundColor: colors.dark.backgroundColor,
   },
   title: {
     fontSize: 18,
