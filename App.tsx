@@ -26,7 +26,7 @@ const App = () => {
       }}
     >
       <SafeAreaProvider>
-        <StatusBar style='light' />
+        <StatusBar style={theme.mode === 'dark' ? 'light' : 'dark'} />
         <Header openSettings={() => bottomSheetRef.current?.expand()} />
         <NavigationContainer>
           <Layout />
