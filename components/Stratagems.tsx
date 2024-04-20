@@ -11,8 +11,9 @@ import { Stratagem } from '../api/data/stratagems'; // Import the Stratagem data
 import colors from '../constants/colors';
 
 import CategorySelector from './category';
-import Bots from './Bots';
-import Bugs from './Bugs';
+import Bugs from './bugs';
+import Bots from './bots';
+import ModulesInfo from './ModulesInfo';
 
 const Stratagems = () => {
   const theme = { mode: 'dark' };
@@ -86,6 +87,8 @@ const Stratagems = () => {
         return <Bots />;
       case 'Bugs':
         return <Bugs />;
+        case 'Modules':
+        return <ModulesInfo />;
       default:
         return null;
     }

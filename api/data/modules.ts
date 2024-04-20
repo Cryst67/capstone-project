@@ -7,7 +7,7 @@ type ModuleData = {
     effect: string;
 };
 
-export const Stratagem: Record<string, ModuleData> = {
+export const modules: Record<string, ModuleData> = {
     DonationAccessLicense: {
         name: `Donation Access Liscense`,
         common: 60,
