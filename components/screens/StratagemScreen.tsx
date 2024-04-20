@@ -1,7 +1,7 @@
 import { ScrollView } from 'react-native';
-import Stratagems from './Stratagems';
-import { Stratagem } from '../api/data/stratagems';
-import colors from '../constants/colors';
+import Stratagems from '../Stratagems';
+import { Stratagem } from '../../api/data/stratagems';
+import colors from '../../constants/colors';
 
 const StratagemScreen = () => {
   return (
