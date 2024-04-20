@@ -40,18 +40,21 @@ const Map = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>War ID: {warInfo.warId}</Text>
+    <>
+      <View style={{ height: 1, backgroundColor: '#343536', width: '100%' }} />
+      <View style={styles.container}>
+        <Text style={styles.title}>War ID: {warInfo.warId}</Text>
 
-      <View style={styles.mapContainer}>
-        {planetInfo.map((planet, index) => (
-          <View
-            key={index}
-            style={[styles.planet, { left: planet.position.x * 100 + 130, top: planet.position.y * 100 + 120 }]}
-          />
-        ))}
+        <View style={styles.mapContainer}>
+          {planetInfo.map((planet, index) => (
+            <View
+              key={index}
+              style={[styles.planet, { left: planet.position.x * 100 + 130, top: planet.position.y * 100 + 120 }]}
+            />
+          ))}
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 

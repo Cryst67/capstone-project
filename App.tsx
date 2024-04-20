@@ -30,10 +30,16 @@ const App = () => {
           <Header openSettings={() => bottomSheetRef.current?.expand()} />
           <NavigationContainer>
             <Tab.Navigator
-              screenOptions={{ headerShown: false, tabBarStyle: styles.tabBarStyle, tabBarShowLabel: false }}
+              screenOptions={{
+                headerShown: false,
+                tabBarStyle: styles.tabBarStyle,
+                tabBarShowLabel: false,
+              }}
             >
               <Tab.Screen
-                options={{ tabBarIcon: () => <Entypo name='home' size={30} color={colors.dark.textColor} /> }}
+                options={{
+                  tabBarIcon: () => <Entypo name='home' size={30} color={colors.dark.textColor} />,
+                }}
                 name='Home'
                 component={Home}
               />
