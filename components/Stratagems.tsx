@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-import { Stratagem } from '../api/mappings/stratagems'; // Import the Stratagem data
+import { Stratagem } from '../api/data/stratagems'; // Import the Stratagem data
 
 const Stratagems = () => {
   return (
