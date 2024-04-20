@@ -17,7 +17,13 @@ const Home = () => {
         tabBarActiveTintColor: 'white',
         tabBarLabelStyle: styles.tabBarLabel,
         tabBarStyle: styles.tabBarStyle,
-        tabBarIndicatorStyle: { backgroundColor: '#fbe74e', height: 3, width: 50, marginLeft: 75, borderRadius: 50 },
+        tabBarIndicatorStyle: {
+          backgroundColor: '#fbe74e',
+          height: 3,
+          width: 50,
+          marginLeft: 75,
+          borderRadius: 50,
+        },
       }}
     >
       <Tab.Screen name='Galactic War' component={Map} />

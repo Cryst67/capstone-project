@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-} from "react-native";
+} from 'react-native';
 
+import { Stratagem } from '../api/data/stratagems'; // Import the Stratagem data
+import colors from '../constants/colors';
 
-import { Stratagem } from "../api/data/stratagems"; // Import the Stratagem data
-import colors from "../constants/colors";
-
-import CategorySelector from "./category";
-import Bots from "./Bots";
-import Bugs from "./Bugs";
-
+import CategorySelector from './category';
+import Bots from './Bots';
+import Bugs from './Bugs';
 
 const Stratagems = () => {
   const [selectedCategory, setSelectedCategory] = useState('Guns');
@@ -33,11 +31,20 @@ const Stratagems = () => {
       case 'Guns':
         return Object.entries(Stratagem).map(([key, stratagem]) => (
           <View key={key} style={styles.stratagemContainer}>
-            <TouchableOpacity key={key} onPress={() => handlePress(key)} style={[styles.stratagemContainer, activeStratagem === key && styles.activeItem]}>
-              <Text style={[
-                styles.stratagemName,
-                activeStratagem === key && styles.activeStratagemName,
-              ]}>
+            <TouchableOpacity
+              key={key}
+              onPress={() => handlePress(key)}
+              style={[
+                styles.stratagemContainer,
+                activeStratagem === key && styles.activeItem,
+              ]}
+            >
+              <Text
+                style={[
+                  styles.stratagemName,
+                  activeStratagem === key && styles.activeStratagemName,
+                ]}
+              >
                 {stratagem.name}
               </Text>
             </TouchableOpacity>
@@ -45,10 +52,10 @@ const Stratagems = () => {
               <>
                 <Text style={styles.stratagemCost}>Cost: {stratagem.cost}</Text>
                 <Text style={styles.stratagemSequence}>
-                  Sequence: {stratagem.sequence.join(", ")}
+                  Sequence: {stratagem.sequence.join(', ')}
                 </Text>
                 <Text style={styles.stratagemContent}>
-                  {stratagem.content.replace(/<\/?p>/g, "")}
+                  {stratagem.content.replace(/<\/?p>/g, '')}
                 </Text>
               </>
             )}
@@ -62,7 +69,7 @@ const Stratagems = () => {
         return null;
     }
   };
-  
+
   return (
     <>
       <CategorySelector
@@ -82,21 +89,21 @@ const styles = StyleSheet.create({
     backgroundColor: colors.dark.backgroundColor,
   },
   stratagemContainer: {
-    borderWidth: 1, 
+    borderWidth: 1,
     padding: 10,
     borderRadius: 10,
     marginBottom: 10,
-    marginHorizontal: 10, 
-    backgroundColor: 'black', 
-    shadowColor: "#000", 
+    marginHorizontal: 10,
+    backgroundColor: 'black',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
     },
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
-    elevation: 3, 
-      borderColor: 'gray', // Default border color
+    elevation: 3,
+    borderColor: 'gray', // Default border color
   },
   activeItem: {
     borderColor: 'yellow',
@@ -104,7 +111,7 @@ const styles = StyleSheet.create({
 
   stratagemName: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: colors.dark.textColor,
   },
   stratagemCost: {
@@ -117,11 +124,10 @@ const styles = StyleSheet.create({
     color: colors.dark.textColor,
   },
   scrollView: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   activeStratagemName: {
-    color: "yellow",
+    color: 'yellow',
   },
-
 });
 export default Stratagems;
