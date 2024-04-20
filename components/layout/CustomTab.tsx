@@ -4,6 +4,9 @@ import { BlurView } from 'expo-blur';
 import colors from '../../constants/colors';
 
 const CustomTab = ({ state, descriptors, navigation }: BottomTabBarProps) => {
+  const theme = { mode: 'dark' };
+  const activeColors = colors[theme.mode as keyof typeof colors];
+
   return (
     <View
       style={{
@@ -62,7 +65,7 @@ const CustomTab = ({ state, descriptors, navigation }: BottomTabBarProps) => {
           >
             {Icon ? (
               <Icon
-                color={isFocused ? colors.dark.textColor : '#87888a'}
+                color={isFocused ? activeColors.textColor : '#87888a'}
                 size={24}
                 focused={isFocused}
               />

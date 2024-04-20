@@ -9,14 +9,17 @@ import colors from '../../constants/colors';
 const Tab = createMaterialTopTabNavigator();
 
 const Home = () => {
+  const theme = { mode: 'dark' };
+  const activeColors = colors[theme.mode as keyof typeof colors];
+
   return (
     <Tab.Navigator
-      style={{ backgroundColor: colors.dark.backgroundColor }}
+      style={{ backgroundColor: activeColors.backgroundColor }}
       screenOptions={{
         tabBarGap: 5,
         tabBarActiveTintColor: 'white',
         tabBarLabelStyle: styles.tabBarLabel,
-        tabBarStyle: styles.tabBarStyle,
+        tabBarStyle: { backgroundColor: activeColors.backgroundColor },
         tabBarIndicatorStyle: {
           backgroundColor: '#fbe74e',
           height: 3,
@@ -38,7 +41,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
   },
-  tabBarStyle: { backgroundColor: colors.dark.backgroundColor },
 });
 
 export default Home;

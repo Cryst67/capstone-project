@@ -18,13 +18,18 @@ interface PlanetInfo {
 }
 
 const Map = () => {
+  const theme = { mode: 'dark' };
+  const activeColors = colors[theme.mode as keyof typeof colors];
+
   const [warInfo, setWarInfo] = useState<any>({});
   const [planetInfo, setPlanetInfo] = useState<PlanetInfo[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const infoResponse = await fetch('https://api.live.prod.thehelldiversgame.com/api/WarSeason/801/WarInfo');
+        const infoResponse = await fetch(
+          'https://api.live.prod.thehelldiversgame.com/api/WarSeason/801/WarInfo',
+        );
         const infoData = await infoResponse.json();
         setWarInfo(infoData);
 
@@ -42,14 +47,27 @@ const Map = () => {
   return (
     <>
       <View style={{ height: 1, backgroundColor: '#343536', width: '100%' }} />
-      <View style={styles.container}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: activeColors.backgroundColor,
+        }}
+      >
         <Text style={styles.title}>War ID: {warInfo.warId}</Text>
 
         <View style={styles.mapContainer}>
           {planetInfo.map((planet, index) => (
             <View
               key={index}
-              style={[styles.planet, { left: planet.position.x * 100 + 130, top: planet.position.y * 100 + 120 }]}
+              style={[
+                styles.planet,
+                {
+                  left: planet.position.x * 100 + 130,
+                  top: planet.position.y * 100 + 120,
+                },
+              ]}
             />
           ))}
         </View>
@@ -61,12 +79,6 @@ const Map = () => {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.dark.backgroundColor,
   },
   title: {
     fontSize: 18,

@@ -9,6 +9,9 @@ import CustomTab from './CustomTab';
 const Tab = createBottomTabNavigator();
 
 const Layout = () => {
+  const theme = { mode: 'dark' };
+  const activeColors = colors[theme.mode as keyof typeof colors];
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -19,7 +22,7 @@ const Layout = () => {
           elevation: 0,
         },
         tabBarShowLabel: false,
-        tabBarActiveTintColor: colors.dark.textColor,
+        tabBarActiveTintColor: activeColors.textColor,
       }}
       tabBar={(props) => <CustomTab {...props} />}
     >

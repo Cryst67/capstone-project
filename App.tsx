@@ -14,17 +14,24 @@ import Header from './components/Header';
 import Settings from './components/screens/Settings';
 
 const App = () => {
+  const theme = { mode: 'dark' };
+  const activeColors = colors[theme.mode as keyof typeof colors];
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   return (
-    <GestureHandlerRootView style={styles.container}>
+    <GestureHandlerRootView
+      style={{
+        flex: 1,
+        backgroundColor: activeColors.backgroundColor,
+      }}
+    >
       <SafeAreaProvider>
         <StatusBar style='light' />
         <Header openSettings={() => bottomSheetRef.current?.expand()} />
         <NavigationContainer>
           <Layout />
           <BottomSheet
-            backgroundStyle={{ backgroundColor: colors.dark.backgroundColor }}
+            backgroundStyle={{ backgroundColor: activeColors.backgroundColor }}
             enableOverDrag={false}
             handleIndicatorStyle={{ height: 0 }}
             ref={bottomSheetRef}
@@ -38,16 +45,5 @@ const App = () => {
     </GestureHandlerRootView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.dark.backgroundColor,
-    color: colors.dark.textColor,
-  },
-  tabBarStyle: {
-    backgroundColor: colors.dark.backgroundColor,
-  },
-});
 
 export default App;

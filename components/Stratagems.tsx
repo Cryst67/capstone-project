@@ -15,6 +15,9 @@ import Bots from './Bots';
 import Bugs from './Bugs';
 
 const Stratagems = () => {
+  const theme = { mode: 'dark' };
+  const activeColors = colors[theme.mode as keyof typeof colors];
+
   const [selectedCategory, setSelectedCategory] = useState('Guns');
   const [activeStratagem, setActiveStratagem] = useState(null);
 
@@ -41,7 +44,11 @@ const Stratagems = () => {
             >
               <Text
                 style={[
-                  styles.stratagemName,
+                  {
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    color: activeColors.textColor,
+                  },
                   activeStratagem === key && styles.activeStratagemName,
                 ]}
               >
@@ -50,11 +57,25 @@ const Stratagems = () => {
             </TouchableOpacity>
             {activeStratagem === key && (
               <>
-                <Text style={styles.stratagemCost}>Cost: {stratagem.cost}</Text>
-                <Text style={styles.stratagemSequence}>
+                <Text
+                  style={{
+                    color: activeColors.textColor,
+                  }}
+                >
+                  Cost: {stratagem.cost}
+                </Text>
+                <Text
+                  style={{
+                    color: activeColors.textColor,
+                  }}
+                >
                   Sequence: {stratagem.sequence.join(', ')}
                 </Text>
-                <Text style={styles.stratagemContent}>
+                <Text
+                  style={{
+                    color: activeColors.textColor,
+                  }}
+                >
                   {stratagem.content.replace(/<\/?p>/g, '')}
                 </Text>
               </>
@@ -76,7 +97,7 @@ const Stratagems = () => {
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
       />
-      <ScrollView style={{ backgroundColor: colors.dark.backgroundColor }}>
+      <ScrollView style={{ backgroundColor: activeColors.backgroundColor }}>
         {renderContent()}
       </ScrollView>
     </>
@@ -84,10 +105,6 @@ const Stratagems = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.dark.backgroundColor,
-  },
   stratagemContainer: {
     borderWidth: 1,
     padding: 10,
@@ -107,21 +124,6 @@ const styles = StyleSheet.create({
   },
   activeItem: {
     borderColor: 'yellow',
-  },
-
-  stratagemName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: colors.dark.textColor,
-  },
-  stratagemCost: {
-    color: colors.dark.textColor,
-  },
-  stratagemSequence: {
-    color: colors.dark.textColor,
-  },
-  stratagemContent: {
-    color: colors.dark.textColor,
   },
   scrollView: {
     flexDirection: 'row',

@@ -11,7 +11,7 @@ const Header = ({ openSettings }: { openSettings: () => void }) => {
       <View style={{ width: 44 }} />
       <Image
         style={styles.logo}
-        source={require('../assets/helldivers_logo.jpeg')}
+        source={require('../assets/helldivers_logo_white.png')}
       />
       <TouchableOpacity onPress={openSettings}>
         <Feather
