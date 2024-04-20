@@ -1,32 +1,43 @@
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import colors from './constants/colors';
-import Map from './components/Map';
-import StratagemComponent from './components/Stratagems';
-
-import { View, SafeAreaView, Image, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
+
+import colors from './constants/colors';
+
+import Stratagems from './components/Stratagems';
+import Home from './components/screens/Home';
 import Header from './components/Header';
 
-const Tab = createMaterialTopTabNavigator();
+const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Header />
-      <NavigationContainer>
+    <GestureHandlerRootView style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <StatusBar style='light' />
-        <Tab.Navigator
-          screenOptions={{
-            tabBarLabelStyle: styles.tabBarLabel,
-            tabBarStyle: styles.tabBarStyle,
-          }}
-        >
-          <Tab.Screen name='Galactic War' component={Map} />
-          <Tab.Screen name='Wiki' component={StratagemComponent} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+        <Header />
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={{ headerShown: false, tabBarStyle: styles.tabBarStyle, tabBarShowLabel: false }}
+          >
+            <Tab.Screen
+              options={{ tabBarIcon: () => <Entypo name='home' size={30} color={colors.dark.textColor} /> }}
+              name='Home'
+              component={Home}
+            />
+            <Tab.Screen
+              options={{ tabBarIcon: () => <AntDesign name='search1' size={30} color={colors.dark.textColor} /> }}
+              name='Settings'
+              component={Stratagems}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 };
 
@@ -45,12 +56,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  tabBarLabel: {
-    color: colors.dark.textColor,
-    textTransform: 'capitalize',
-    fontSize: 15,
-    fontWeight: 'bold',
   },
   tabBarStyle: { backgroundColor: colors.dark.backgroundColor },
 });
