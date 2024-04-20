@@ -10,9 +10,11 @@ import {
 
 import { Stratagem } from "../api/data/stratagems"; // Import the Stratagem data
 import colors from "../constants/colors";
-import Bots from "./bots";
+
 import CategorySelector from "./category";
-import Bugs from "./bugs";
+import Bots from "./Bots";
+import Bugs from "./Bugs";
+
 
 const Stratagems = () => {
   const [selectedCategory, setSelectedCategory] = useState('Guns');
