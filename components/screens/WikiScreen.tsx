@@ -13,7 +13,7 @@ import colors from '../../constants/colors';
 
 const WikiScreen = () => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   const [selectedCategory, setSelectedCategory] = useState('Stratagems');
 

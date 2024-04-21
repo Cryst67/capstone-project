@@ -7,7 +7,7 @@ import colors from '../constants/colors';
 
 const Header = ({ openSettings }: { openSettings: () => void }) => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   const insets = useSafeAreaInsets();
 

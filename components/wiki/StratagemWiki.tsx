@@ -7,7 +7,7 @@ import colors from '../../constants/colors';
 
 const StratagemWiki = () => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   const [activeStratagem, setActiveStratagem] = useState<string | null>(null);
 

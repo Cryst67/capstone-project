@@ -13,7 +13,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 
 const ModuleWiki = () => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   const [activeModule, setActiveModule] = useState(null);
 

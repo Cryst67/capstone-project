@@ -15,7 +15,7 @@ const CategorySelector: React.FC<Props> = ({
   onSelectCategory,
 }) => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   return (
     <View style={styles.categoriesContainer}>

@@ -13,7 +13,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 
 const AutomatonWiki = () => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   const [activeRobot, setActiveRobot] = useState(null);
 

@@ -13,7 +13,7 @@ import Settings from './components/screens/Settings';
 
 const App = () => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
   const bottomSheetRef = useRef<BottomSheet>(null);
 
   return (

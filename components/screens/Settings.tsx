@@ -14,7 +14,7 @@ const Settings = ({
 }) => {
   const insets = useSafeAreaInsets();
   const { theme, updateTheme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   return (
     <BottomSheet

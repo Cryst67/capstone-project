@@ -6,13 +6,14 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+23;
 import { terminids } from '../../api/data/terminids'; // Import the Bugs data
 import colors from '../../constants/colors';
 import { useTheme } from '../../contexts/ThemeContext';
 
 const TerminidWiki = () => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   const [activeBug, setActiveBug] = useState(null);
 

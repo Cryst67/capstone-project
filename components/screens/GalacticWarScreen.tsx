@@ -22,7 +22,7 @@ interface PlanetInfo {
 
 const GalacticWarScreen = () => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   const [warInfo, setWarInfo] = useState<any>({});
   const [planetInfo, setPlanetInfo] = useState<PlanetInfo[]>([]);

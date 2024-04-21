@@ -10,7 +10,7 @@ const CustomTopTab = ({
   navigation,
 }: BottomTabBarProps) => {
   const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const activeColors = colors[theme.mode];
 
   return (
     <View
