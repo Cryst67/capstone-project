@@ -18,6 +18,45 @@ const Settings = ({
 
   const toggleTheme = () => updateTheme({ mode: isDarkMode ? 'light' : 'dark' });
 
+
+  const dynamicStyles = StyleSheet.create({
+    text: {
+      color: isDarkMode ? 'white' : 'black', 
+    },
+    sectionTitle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: isDarkMode ? 'white' : 'black', 
+      marginBottom: 20,
+    },
+    themeSwitchLabel: {
+      fontSize: 16,
+      color: isDarkMode ? 'white' : 'black', 
+      marginRight: 10,
+    },
+    githubButtonText: {
+      color: isDarkMode ? 'black' : 'black', 
+      fontWeight: 'bold',
+      textAlign: 'center',
+    },
+    closeButton: {
+      backgroundColor: isDarkMode ? 'gray' : 'lightgray', 
+      padding: 15,
+      borderRadius: 5,
+      marginVertical: 10,
+    },
+    closeButtonText: {
+      color: isDarkMode ? 'white' : 'black', 
+      fontWeight: 'bold',
+      textAlign: 'center',
+    },
+    developersText: {
+      color: isDarkMode ? 'white' : 'black', 
+      fontStyle: 'italic',
+      marginTop: 20,
+    },
+  });
+
   return (
     <BottomSheet
       backgroundStyle={{ backgroundColor: colors[theme.mode].backgroundColor }}
@@ -28,9 +67,9 @@ const Settings = ({
       snapPoints={['100%']}
     >
       <View style={{ paddingTop: insets.top, backgroundColor: colors[theme.mode].backgroundColor, alignItems: 'center', padding: 20 }}>
-        <Text style={styles.sectionTitle}>Settings</Text>
+        <Text style={dynamicStyles.sectionTitle}>Settings</Text>
         <View style={styles.themeSwitchContainer}>
-          <Text style={styles.themeSwitchLabel}>{isDarkMode ? 'Change to light theme' : 'Light Mode'}</Text>
+          <Text style={dynamicStyles.themeSwitchLabel}>{isDarkMode ? 'Change to light theme' : 'Change to Dark Mode'}</Text>
           <Switch
             trackColor={{ false: '#767577', true: '#81b0ff' }}
             thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
@@ -39,12 +78,12 @@ const Settings = ({
           />
         </View>
         <TouchableOpacity style={styles.githubButton} onPress={() => Linking.openURL('https://github.com/Cryst67/capstone-project.git')}>
-          <Text style={styles.githubButtonText}>Visit our GitHub Repository</Text>
+          <Text style={dynamicStyles.githubButtonText}>Visit our GitHub Repository</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.closeButton} onPress={handleClose}>
-          <Text style={styles.closeButtonText}>Close</Text>
+        <TouchableOpacity style={dynamicStyles.closeButton} onPress={handleClose}>
+          <Text style={dynamicStyles.closeButtonText}>Close</Text>
         </TouchableOpacity>
-        <Text style={styles.developersText}>Developed by Aryan, Grant, Casey</Text>
+        <Text style={dynamicStyles.developersText}>Developed by Aryan, Grant, Casey</Text>
       </View>
     </BottomSheet>
   );
