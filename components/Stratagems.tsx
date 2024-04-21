@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   View,
   Text,
@@ -11,7 +11,7 @@ import { Stratagem } from '../api/data/stratagems'; // Import the Stratagem data
 import colors from '../constants/colors';
 import { useTheme } from '../contexts/ThemeContext';
 import CategorySelector from './category';
-import Bugs from './bugs';
+import Bugs from './Bugs';
 import Bots from './bots';
 import ModulesInfo from './ModulesInfo';
 
@@ -34,10 +34,14 @@ const Stratagems = () => {
     switch (selectedCategory) {
       case 'Guns':
         return Object.entries(Stratagem).map(([key, stratagem]) => (
-          <View key={key} style={[styles.stratagemContainer, activeStratagem === key && styles.activeItem]}>
-            <TouchableOpacity
-              onPress={() => handlePress(key)}
-            >
+          <View
+            key={key}
+            style={[
+              styles.stratagemContainer,
+              activeStratagem === key && styles.activeItem,
+            ]}
+          >
+            <TouchableOpacity onPress={() => handlePress(key)}>
               <Text
                 style={[
                   styles.stratagemName,
