@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import Planets from '../api/mappings/planets'; // Import the Planets mapping
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Planets from '../api/mappings/planets';
 import colors from '../constants/colors';
 import { useTheme } from '../contexts/ThemeContext';
+import FactionColors from '../api/mappings/factioncolors';
+import PlanetInfo from './Planet'; // Import PlanetInfo component
+
 interface PlanetInfo {
   index: keyof typeof Planets;
   settingsHash: number;
@@ -17,19 +20,24 @@ interface PlanetInfo {
   initialOwner: number;
 }
 
+const Factions = {
+  1: 'blue', // Humans
+  2: 'yellow', // Terminids
+  3: 'red', // Automatons
+};
+
 const Map = () => {
   const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
   const [warInfo, setWarInfo] = useState<any>({});
   const [planetInfo, setPlanetInfo] = useState<PlanetInfo[]>([]);
+  const [selectedPlanet, setSelectedPlanet] = useState<PlanetInfo | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const infoResponse = await fetch(
-          'https://api.live.prod.thehelldiversgame.com/api/WarSeason/801/WarInfo',
-        );
+        const infoResponse = await fetch('https://api.live.prod.thehelldiversgame.com/api/WarSeason/801/WarInfo');
         const infoData = await infoResponse.json();
         setWarInfo(infoData);
 
@@ -44,28 +52,27 @@ const Map = () => {
     fetchData();
   }, []);
 
+  const handlePlanetClick = (planet: PlanetInfo) => {
+    setSelectedPlanet(planet);
+  };
+
   return (
     <>
       <View style={{ height: 1, backgroundColor: '#343536', width: '100%' }} />
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: activeColors.backgroundColor,
-        }}
-      >
+      <View style={{ flex: 1, alignItems: 'center', backgroundColor: activeColors.backgroundColor }}>
         <Text style={styles.title}>War ID: {warInfo.warId}</Text>
 
         <View style={styles.mapContainer}>
           {planetInfo.map((planet, index) => (
-            <View
+            <TouchableOpacity
               key={index}
+              onPress={() => handlePlanetClick(planet)}
               style={[
                 styles.planet,
                 {
-                  left: planet.position.x * 100 + 130,
+                  left: planet.position.x * 100 + 260,
                   top: planet.position.y * 100 + 120,
+                  backgroundColor: FactionColors[planet.initialOwner] || 'white',
                 },
               ]}
             />
@@ -77,9 +84,6 @@ const Map = () => {
 };
 
 const styles = StyleSheet.create({
-  scrollContainer: {
-    flexGrow: 1,
-  },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
@@ -95,7 +99,6 @@ const styles = StyleSheet.create({
   },
   planet: {
     position: 'absolute',
-    backgroundColor: 'red',
     width: 10,
     height: 10,
     borderRadius: 5,
