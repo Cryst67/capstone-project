@@ -4,11 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import BottomSheet from '@gorhom/bottom-sheet';
 import { useRef } from 'react';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
-import { StatusBar } from 'expo-status-bar';
 
 import colors from './constants/colors';
 
-import Layout from './components/layout/Layout';
+import BottomTabLayout from './components/layout/BottomTabLayout';
 import Header from './components/Header';
 import Settings from './components/screens/Settings';
 
@@ -26,22 +25,13 @@ const App = () => {
         }}
       >
         <SafeAreaProvider>
-          <StatusBar style={theme.mode === 'dark' ? 'light' : 'dark'} />
           <Header openSettings={() => bottomSheetRef.current?.expand()} />
           <NavigationContainer>
-            <Layout />
-            <BottomSheet
-              backgroundStyle={{
-                backgroundColor: activeColors.backgroundColor,
-              }}
-              enableOverDrag={false}
-              handleIndicatorStyle={{ height: 0 }}
-              ref={bottomSheetRef}
-              index={-1}
-              snapPoints={['100%']}
-            >
-              <Settings handleClose={() => bottomSheetRef.current?.close()} />
-            </BottomSheet>
+            <BottomTabLayout />
+            <Settings
+              handleClose={() => bottomSheetRef.current?.close()}
+              bottomSheetRef={bottomSheetRef}
+            />
           </NavigationContainer>
         </SafeAreaProvider>
       </GestureHandlerRootView>

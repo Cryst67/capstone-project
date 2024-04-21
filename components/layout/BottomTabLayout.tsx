@@ -4,11 +4,12 @@ import Home from '../screens/Home';
 import colors from '../../constants/colors';
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import CustomTab from './CustomTab';
+import CustomBottomTab from './CustomBottomTab';
 import { useTheme } from '../../contexts/ThemeContext';
+
 const Tab = createBottomTabNavigator();
 
-const Layout = () => {
+const BottomTabLayout = () => {
   const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
@@ -24,7 +25,7 @@ const Layout = () => {
         tabBarShowLabel: false,
         tabBarActiveTintColor: activeColors.textColor,
       }}
-      tabBar={(props) => <CustomTab {...props} />}
+      tabBar={(props) => <CustomBottomTab {...props} />}
     >
       <Tab.Screen
         options={{
@@ -50,4 +51,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default BottomTabLayout;

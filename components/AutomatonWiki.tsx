@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   View,
   Text,
@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { Automatons } from '../api/data/automatons'; // Import the Automatons data
+import { automatons } from '../api/data/automatons';
 import colors from '../constants/colors';
 import { useTheme } from '../contexts/ThemeContext';
 
-const Bots = () => {
-  const { theme } = useTheme(); // Use the theme from the context
-  const activeColors = colors[theme.mode as keyof typeof colors]; // Access colors based on the current theme
+const AutomatonWiki = () => {
+  const { theme } = useTheme();
+  const activeColors = colors[theme.mode as keyof typeof colors];
 
   const [activeRobot, setActiveRobot] = useState(null);
 
@@ -24,8 +24,14 @@ const Bots = () => {
   return (
     <ScrollView>
       <View style={{ flex: 1, backgroundColor: activeColors.backgroundColor }}>
-        {Object.entries(Automatons).map(([key, robot]) => (
-          <View key={key} style={[styles.robotContainer, { borderColor: activeColors.textColor }]}>
+        {Object.entries(automatons).map(([key, robot]) => (
+          <View
+            key={key}
+            style={[
+              styles.robotContainer,
+              { borderColor: activeColors.textColor },
+            ]}
+          >
             <TouchableOpacity onPress={() => handlePress(key)}>
               <Text
                 style={[
@@ -39,8 +45,12 @@ const Bots = () => {
             </TouchableOpacity>
             {activeRobot === key && (
               <>
-                <Text style={{ color: activeColors.textColor }}>Appearance: {robot.appearance}</Text>
-                <Text style={{ color: activeColors.textColor }}>Tactics: {robot.tactics}</Text>
+                <Text style={{ color: activeColors.textColor }}>
+                  Appearance: {robot.appearance}
+                </Text>
+                <Text style={{ color: activeColors.textColor }}>
+                  Tactics: {robot.tactics}
+                </Text>
               </>
             )}
           </View>
@@ -72,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Bots;
+export default AutomatonWiki;
