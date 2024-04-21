@@ -6,7 +6,7 @@ type Props = {
     onSelectCategory: (category: string) => void;
   };
   
-const categories = ['Guns', 'Bots', 'Bugs', 'Modules'];
+const categories = ['Guns', 'AutomatonWiki', 'TerminidWiki', 'Modules'];
 
 const CategorySelector: React.FC<Props> = ({ selectedCategory, onSelectCategory }) => {
     return (
