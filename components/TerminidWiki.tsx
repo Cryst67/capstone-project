@@ -6,11 +6,11 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import { Terminids } from '../api/data/terminids'; // Import the Bugs data
+import { terminids } from '../api/data/terminids'; // Import the Bugs data
 import colors from '../constants/colors';
 import { useTheme } from '../contexts/ThemeContext';
 
-const Bugs = () => {
+const TerminidWiki = () => {
   const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
@@ -28,7 +28,7 @@ const Bugs = () => {
           backgroundColor: activeColors.backgroundColor,
         }}
       >
-        {Object.entries(Terminids).map(([key, bug]) => (
+        {Object.entries(terminids).map(([key, bug]) => (
           <View key={key} style={styles.bugContainer}>
             <TouchableOpacity onPress={() => handlePress(key)}>
               <Text
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Bugs;
+export default TerminidWiki;
