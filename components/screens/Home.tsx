@@ -1,8 +1,9 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { StyleSheet } from 'react-native';
 
-import Stratagems from '../Stratagems';
-import Map from '../Map';
+import WikiScreen from './WikiScreen';
+import GalacticWarScreen from './GalacticWarScreen';
+
 import { useTheme } from '../../contexts/ThemeContext';
 import colors from '../../constants/colors';
 import { StatusBar } from 'expo-status-bar';
@@ -32,8 +33,8 @@ const Home = () => {
           },
         }}
       >
-        <Tab.Screen name='Galactic War' component={Map} />
-        <Tab.Screen name='Wiki' component={Stratagems} />
+        <Tab.Screen name='Galactic War' component={GalacticWarScreen} />
+        <Tab.Screen name='Wiki' component={WikiScreen} />
       </Tab.Navigator>
     </>
   );

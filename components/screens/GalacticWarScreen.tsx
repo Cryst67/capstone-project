@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Planets from '../api/mappings/planets';
-import colors from '../constants/colors';
-import { useTheme } from '../contexts/ThemeContext';
-import FactionColors from '../api/mappings/factioncolors';
-import PlanetInfo from './Planet'; // Import PlanetInfo component
+import Planets from '../../api/mappings/planets';
+import colors from '../../constants/colors';
+import { useTheme } from '../../contexts/ThemeContext';
+import FactionColors from '../../api/mappings/factioncolors';
+import PlanetInfo from '../Planet'; // Import PlanetInfo component
 
 interface PlanetInfo {
   index: keyof typeof Planets;
@@ -20,13 +20,7 @@ interface PlanetInfo {
   initialOwner: number;
 }
 
-const Factions = {
-  1: 'blue', // Humans
-  2: 'yellow', // Terminids
-  3: 'red', // Automatons
-};
-
-const Map = () => {
+const GalacticWarScreen = () => {
   const { theme } = useTheme();
   const activeColors = colors[theme.mode as keyof typeof colors];
 
@@ -37,7 +31,9 @@ const Map = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const infoResponse = await fetch('https://api.live.prod.thehelldiversgame.com/api/WarSeason/801/WarInfo');
+        const infoResponse = await fetch(
+          'https://api.live.prod.thehelldiversgame.com/api/WarSeason/801/WarInfo',
+        );
         const infoData = await infoResponse.json();
         setWarInfo(infoData);
 
@@ -59,7 +55,13 @@ const Map = () => {
   return (
     <>
       <View style={{ height: 1, backgroundColor: '#343536', width: '100%' }} />
-      <View style={{ flex: 1, alignItems: 'center', backgroundColor: activeColors.backgroundColor }}>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          backgroundColor: activeColors.backgroundColor,
+        }}
+      >
         <Text style={styles.title}>War ID: {warInfo.warId}</Text>
 
         <View style={styles.mapContainer}>
@@ -72,7 +74,8 @@ const Map = () => {
                 {
                   left: planet.position.x * 100 + 260,
                   top: planet.position.y * 100 + 120,
-                  backgroundColor: FactionColors[planet.initialOwner] || 'white',
+                  backgroundColor:
+                    FactionColors[planet.initialOwner] || 'white',
                 },
               ]}
             />
@@ -105,4 +108,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Map;
+export default GalacticWarScreen;

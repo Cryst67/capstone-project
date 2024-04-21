@@ -7,9 +7,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { automatons } from '../api/data/automatons';
-import colors from '../constants/colors';
-import { useTheme } from '../contexts/ThemeContext';
+import { automatons } from '../../api/data/automatons';
+import colors from '../../constants/colors';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const AutomatonWiki = () => {
   const { theme } = useTheme();
@@ -37,7 +37,9 @@ const AutomatonWiki = () => {
                 style={[
                   styles.robotName,
                   { color: activeColors.textColor },
-                  activeRobot === key && styles.activeRobotName,
+                  activeRobot === key && {
+                    color: activeColors.primary,
+                  },
                 ]}
               >
                 {robot.name}
@@ -76,9 +78,6 @@ const styles = StyleSheet.create({
   robotName: {
     fontSize: 16,
     fontWeight: 'bold',
-  },
-  activeRobotName: {
-    color: 'yellow', // Highlight color for the active item
   },
 });
 

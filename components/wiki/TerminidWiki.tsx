@@ -6,9 +6,9 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import { terminids } from '../api/data/terminids'; // Import the Bugs data
-import colors from '../constants/colors';
-import { useTheme } from '../contexts/ThemeContext';
+import { terminids } from '../../api/data/terminids'; // Import the Bugs data
+import colors from '../../constants/colors';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const TerminidWiki = () => {
   const { theme } = useTheme();
@@ -38,7 +38,9 @@ const TerminidWiki = () => {
                     fontWeight: 'bold',
                     color: activeColors.textColor,
                   },
-                  activeBug === key && styles.activeBugName,
+                  activeBug === key && {
+                    color: activeColors.primary,
+                  },
                 ]}
               >
                 {bug.name}
@@ -85,9 +87,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
-  },
-  activeBugName: {
-    color: 'yellow',
   },
 });
 

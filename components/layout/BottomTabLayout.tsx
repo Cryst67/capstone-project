@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Stratagems from '../Stratagems';
+import Stratagems from '../screens/WikiScreen';
 import Home from '../screens/Home';
 import colors from '../../constants/colors';
 import { AntDesign } from '@expo/vector-icons';
