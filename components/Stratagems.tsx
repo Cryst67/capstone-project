@@ -12,7 +12,7 @@ import colors from '../constants/colors';
 import { useTheme } from '../contexts/ThemeContext';
 import CategorySelector from './category';
 import Bugs from './Bugs';
-import Bots from './bots';
+import Bots from './Bots';
 import ModulesInfo from './ModulesInfo';
 
 const Stratagems = () => {
