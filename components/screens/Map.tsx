@@ -1,12 +1,56 @@
-import { View, Image, ScrollView } from 'react-native';
+import { View, Image, ScrollView, Text } from 'react-native';
 
 import { useTheme } from '../../contexts/ThemeContext';
 import colors from '../../constants/colors';
 import Svg, { Image as SvgImage } from 'react-native-svg';
+import { useEffect, useState } from 'react';
+import Planets from '../../api/mappings/planets';
+
+type campaignData = {
+  count: number;
+  id: number;
+  planetIndex: number;
+  type: number;
+};
 
 const Map = () => {
   const { theme } = useTheme();
   const activeColors = colors[theme.mode];
+  const [expiryDate, setExpiryDate] = useState('');
+  const [briefing, setBriefing] = useState('');
+  const [task, setTask] = useState('');
+  const [reward, setReward] = useState('');
+
+  const [kills, setKills] = useState<number>();
+  const [deaths, setDeaths] = useState<number>();
+  const [bulletsFired, setBulletsFired] = useState<number>();
+
+  useEffect(() => {
+    const getCampaignData = async () => {
+      const res = await fetch(
+        'https://api.live.prod.thehelldiversgame.com/api/v2/Assignment/War/801',
+      );
+      const data = await res.json();
+      const date = new Date((Date.now() / 1000 + data[0].expiresIn) * 1000);
+      setExpiryDate(`${date.getDate()}/${date.getMonth()}`);
+      setBriefing(data[0].setting.overrideBrief);
+      setTask(data[0].setting.taskDescription);
+      setReward(data[0].setting.reward.amount);
+    };
+    getCampaignData();
+
+    const getWarStats = async () => {
+      const res = await fetch(
+        'https://api.live.prod.thehelldiversgame.com/api/Stats/War/801/Summary',
+      );
+      const data = await res.json();
+      setKills(data.galaxy_stats.bugKills + data.galaxy_stats.automatonKills);
+      setDeaths(data.galaxy_stats.deaths);
+      setBulletsFired(data.galaxy_stats.bulletsFired);
+    };
+
+    getWarStats();
+  }, []);
 
   const imageWidth = 350;
   const imageHeight = 350;
@@ -58,6 +102,31 @@ const Map = () => {
             y={pointY}
           />
         </Svg>
+      </View>
+      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ color: activeColors.textColor }}>Major Order</Text>
+        <Text style={{ color: activeColors.textColor }}>Ends {expiryDate}</Text>
+        <Text style={{ color: activeColors.textColor }}>{briefing}</Text>
+      </View>
+      <View>
+        <Text style={{ color: activeColors.textColor }}>Task</Text>
+        <Text style={{ color: activeColors.textColor }}>{task}</Text>
+      </View>
+      <View>
+        <Text style={{ color: activeColors.textColor }}>Reward</Text>
+        <Text style={{ color: activeColors.textColor }}> {reward}</Text>
+      </View>
+      <View>
+        <Text style={{ color: activeColors.textColor }}>War Stats</Text>
+        <Text style={{ color: activeColors.textColor }}>
+          Enemies Killed {kills}
+        </Text>
+        <Text style={{ color: activeColors.textColor }}>
+          Helldivers KIA {deaths}
+        </Text>
+        <Text style={{ color: activeColors.textColor }}>
+          Bullets Fired {bulletsFired}
+        </Text>
       </View>
     </ScrollView>
   );
