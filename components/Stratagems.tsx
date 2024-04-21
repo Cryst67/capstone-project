@@ -34,60 +34,40 @@ const Stratagems = () => {
     switch (selectedCategory) {
       case 'Guns':
         return Object.entries(Stratagem).map(([key, stratagem]) => (
-          <View key={key} style={styles.stratagemContainer}>
+          <View key={key} style={[styles.stratagemContainer, activeStratagem === key && styles.activeItem]}>
             <TouchableOpacity
-              key={key}
               onPress={() => handlePress(key)}
-              style={[
-                styles.stratagemContainer,
-                activeStratagem === key && styles.activeItem,
-              ]}
             >
               <Text
                 style={[
-                  {
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    color: activeColors.textColor,
-                  },
+                  styles.stratagemName,
+                  { color: activeColors.textColor },
                   activeStratagem === key && styles.activeStratagemName,
                 ]}
               >
                 {stratagem.name}
               </Text>
+              {activeStratagem === key && (
+                <>
+                  <Text style={{ color: activeColors.textColor }}>
+                    Cost: {stratagem.cost}
+                  </Text>
+                  <Text style={{ color: activeColors.textColor }}>
+                    Sequence: {stratagem.sequence.join(', ')}
+                  </Text>
+                  <Text style={{ color: activeColors.textColor }}>
+                    {stratagem.content.replace(/<\/?p>/g, '')}
+                  </Text>
+                </>
+              )}
             </TouchableOpacity>
-            {activeStratagem === key && (
-              <>
-                <Text
-                  style={{
-                    color: activeColors.textColor,
-                  }}
-                >
-                  Cost: {stratagem.cost}
-                </Text>
-                <Text
-                  style={{
-                    color: activeColors.textColor,
-                  }}
-                >
-                  Sequence: {stratagem.sequence.join(', ')}
-                </Text>
-                <Text
-                  style={{
-                    color: activeColors.textColor,
-                  }}
-                >
-                  {stratagem.content.replace(/<\/?p>/g, '')}
-                </Text>
-              </>
-            )}
           </View>
         ));
       case 'Bots':
         return <Bots />;
       case 'Bugs':
         return <Bugs />;
-        case 'Modules':
+      case 'Modules':
         return <ModulesInfo />;
       default:
         return null;
@@ -114,7 +94,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
     marginHorizontal: 10,
-    backgroundColor: 'black',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -128,11 +107,13 @@ const styles = StyleSheet.create({
   activeItem: {
     borderColor: 'yellow',
   },
-  scrollView: {
-    flexDirection: 'row',
+  stratagemName: {
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   activeStratagemName: {
     color: 'yellow',
   },
 });
+
 export default Stratagems;

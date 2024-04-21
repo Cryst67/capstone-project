@@ -12,8 +12,8 @@ import colors from '../constants/colors';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Bots = () => {
-  const { theme } = useTheme();
-  const activeColors = colors[theme.mode as keyof typeof colors];
+  const { theme } = useTheme(); // Use the theme from the context
+  const activeColors = colors[theme.mode as keyof typeof colors]; // Access colors based on the current theme
 
   const [activeRobot, setActiveRobot] = useState(null);
 
@@ -23,22 +23,14 @@ const Bots = () => {
 
   return (
     <ScrollView>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: activeColors.backgroundColor,
-        }}
-      >
+      <View style={{ flex: 1, backgroundColor: activeColors.backgroundColor }}>
         {Object.entries(Automatons).map(([key, robot]) => (
-          <View key={key} style={styles.robotContainer}>
+          <View key={key} style={[styles.robotContainer, { borderColor: activeColors.textColor }]}>
             <TouchableOpacity onPress={() => handlePress(key)}>
               <Text
                 style={[
-                  {
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    color: activeColors.textColor,
-                  },
+                  styles.robotName,
+                  { color: activeColors.textColor },
                   activeRobot === key && styles.activeRobotName,
                 ]}
               >
@@ -47,12 +39,8 @@ const Bots = () => {
             </TouchableOpacity>
             {activeRobot === key && (
               <>
-                <Text style={{ color: activeColors.textColor }}>
-                  Appearance: {robot.appearance}
-                </Text>
-                <Text style={{ color: activeColors.textColor }}>
-                  Tactics: {robot.tactics}
-                </Text>
+                <Text style={{ color: activeColors.textColor }}>Appearance: {robot.appearance}</Text>
+                <Text style={{ color: activeColors.textColor }}>Tactics: {robot.tactics}</Text>
               </>
             )}
           </View>
@@ -65,23 +53,22 @@ const Bots = () => {
 const styles = StyleSheet.create({
   robotContainer: {
     borderWidth: 1,
-    borderColor: 'gray',
     padding: 10,
     borderRadius: 10,
     marginBottom: 10,
     marginHorizontal: 10,
-    backgroundColor: 'black',
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
   },
+  robotName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
   activeRobotName: {
-    color: 'yellow',
+    color: 'yellow', // Highlight color for the active item
   },
 });
 
