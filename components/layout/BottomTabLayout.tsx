@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import CustomBottomTab from './CustomBottomTab';
 import { useTheme } from '../../contexts/ThemeContext';
+import SearchScreen from '../screens/SearchScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,8 +45,8 @@ const BottomTabLayout = () => {
             <AntDesign name='search1' size={size} color={color} />
           ),
         }}
-        name='Settings'
-        component={Stratagems}
+        name='Search'
+        component={SearchScreen}
       />
     </Tab.Navigator>
   );
