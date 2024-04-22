@@ -3,12 +3,7 @@ export interface StratagemEntry {
   cost?: number; //now cost is optional
   sequence: string[];
   content: string;
-<<<<<<< HEAD
   image?: string;
-=======
-  image?: string; // Add image property
-
->>>>>>> map
 }
 
 export const Stratagem: Record<string, StratagemEntry> = {
