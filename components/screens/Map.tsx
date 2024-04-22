@@ -1,4 +1,4 @@
-import { View, Image, ScrollView, Text } from 'react-native';
+import { View, Image, ScrollView, Text,  StyleSheet, } from 'react-native';
 
 import { useTheme } from '../../contexts/ThemeContext';
 import colors from '../../constants/colors';
@@ -16,6 +16,7 @@ type campaignData = {
 const Map = () => {
   const { theme } = useTheme();
   const activeColors = colors[theme.mode];
+  const styles = dynamicStyles(activeColors);
   const [expiryDate, setExpiryDate] = useState('');
   const [briefing, setBriefing] = useState('');
   const [task, setTask] = useState('');
@@ -103,33 +104,65 @@ const Map = () => {
           />
         </Svg>
       </View>
-      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{ color: activeColors.textColor }}>Major Order</Text>
-        <Text style={{ color: activeColors.textColor }}>Ends {expiryDate}</Text>
-        <Text style={{ color: activeColors.textColor }}>{briefing}</Text>
-      </View>
-      <View>
-        <Text style={{ color: activeColors.textColor }}>Task</Text>
-        <Text style={{ color: activeColors.textColor }}>{task}</Text>
-      </View>
-      <View>
-        <Text style={{ color: activeColors.textColor }}>Reward</Text>
-        <Text style={{ color: activeColors.textColor }}> {reward}</Text>
-      </View>
-      <View>
-        <Text style={{ color: activeColors.textColor }}>War Stats</Text>
-        <Text style={{ color: activeColors.textColor }}>
-          Enemies Killed {kills}
-        </Text>
-        <Text style={{ color: activeColors.textColor }}>
-          Helldivers KIA {deaths}
-        </Text>
-        <Text style={{ color: activeColors.textColor }}>
-          Bullets Fired {bulletsFired}
-        </Text>
-      </View>
+      <View style={styles.sectionContainer}>
+  <Text style={styles.headerText}>Major Order</Text>
+  <Text style={styles.contentText}>Ends {expiryDate}</Text>
+  <Text style={styles.contentText}>{briefing}</Text>
+</View>
+{/* <View style={styles.rewardsContainer}>
+  <Text style={styles.headerText}>Task</Text>
+  <Text style={styles.contentText}>{task}</Text>
+</View>
+<View style={styles.rewardsContainer}>
+  <Text style={styles.headerText}>Reward</Text>
+  <Text style={styles.contentText}>{reward}</Text>
+        </View> */}
+<View style={styles.statsContainer}>
+  <Text style={styles.headerText}>War Stats</Text>
+  <Text style={styles.contentText}>Enemies Killed {kills}</Text>
+  <Text style={styles.contentText}>Helldivers KIA {deaths}</Text>
+  <Text style={styles.contentText}>Bullets Fired {bulletsFired}</Text>
+</View>
+
     </ScrollView>
   );
 };
+
+const dynamicStyles = (activeColors: any) => StyleSheet.create({
+  sectionContainer: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 15, 
+    paddingHorizontal: 20, 
+  },
+  headerText: {
+    color: activeColors.textColor,
+    fontSize: 22, 
+    fontWeight: 'bold',
+    marginTop: 10, 
+  },
+  contentText: {
+    color: activeColors.textColor,
+    fontSize: 18,
+    marginVertical: 4, 
+  },
+  statsContainer: {
+    alignSelf: 'stretch', 
+    alignItems: 'flex-start', 
+    justifyContent: 'center', 
+    paddingHorizontal: 20, 
+    paddingVertical: 15, 
+    marginVertical: 10, 
+    borderRadius: 10, 
+    borderWidth: 1, 
+    borderColor: activeColors.textColor, 
+  },
+  rewardsContainer: {
+    alignSelf: 'stretch', 
+    alignItems: 'center', 
+    padding: 20, 
+  },
+});
 
 export default Map;
