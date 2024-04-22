@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Stratagem } from '../../api/data/stratagems';
 import { useState } from 'react';
@@ -44,8 +44,9 @@ const StratagemWiki = () => {
                   ,
                 ]}
               >
-                {stratagem.name}
+               <Image source={stratagem.image} style={styles.image} /> {stratagem.name}
               </Text>
+
               {activeStratagem === key && (
                 <>
                   <Text style={{ color: activeColors.textColor }}>
@@ -87,6 +88,16 @@ const styles = StyleSheet.create({
   stratagemName: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  imageContainer: {
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  image: {
+    width: 25,
+    height: 25,
+    resizeMode: 'contain',
+    paddingRight: 35,
   },
 });
 
