@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Image
 } from 'react-native';
 
 import { automatons } from '../../api/data/automatons';
@@ -50,9 +51,11 @@ const AutomatonWiki = () => {
                 <Text style={{ color: activeColors.textColor }}>
                   Appearance: {robot.appearance}
                 </Text>
+                <Text> </Text>
                 <Text style={{ color: activeColors.textColor }}>
                   Tactics: {robot.tactics}
                 </Text>
+                <Image source={robot.image} style={styles.image} />
               </>
             )}
           </View>
@@ -78,6 +81,12 @@ const styles = StyleSheet.create({
   robotName: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  image: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
+    alignSelf: `center`,
   },
 });
 

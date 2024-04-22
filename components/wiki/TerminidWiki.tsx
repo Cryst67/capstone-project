@@ -5,6 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Image
 } from 'react-native';
 23;
 import { terminids } from '../../api/data/terminids'; // Import the Bugs data
@@ -54,15 +55,17 @@ const TerminidWiki = () => {
                     color: activeColors.textColor,
                   }}
                 >
-                  {bug.appearance}
+                 Appearance: {bug.appearance}
                 </Text>
+                <Text> </Text>
                 <Text
                   style={{
                     color: activeColors.textColor,
                   }}
                 >
-                  {bug.tactics}
+                 Tactics: {bug.tactics}
                 </Text>
+                <Image source={bug.image} style={styles.image} />
               </>
             )}
           </View>
@@ -88,6 +91,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
+    alignSelf: `center`,
   },
 });
 

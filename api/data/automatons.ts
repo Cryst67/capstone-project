@@ -2,6 +2,7 @@ type RobotData = {
   name: string;
   appearance: string;
   tactics: string;
+  image?: string; // Add image property
 };
 
 export const automatons: Record<string, RobotData> = {
@@ -15,6 +16,8 @@ export const automatons: Record<string, RobotData> = {
     tactics: `Target their exposed heads for maximum damage and intercept their calls for backup to maintain the upper hand.
         Use the environment to your advantage, taking cover and employing guerrilla tactics to outsmart them. Grenades are your best
         friend for disrupting clusters of Troopers and causing chaos.`,
+
+        image: require('../../assets/automatons/trooper.png'),
   },
   Commissar: {
     name: `Commissar`,
@@ -23,6 +26,8 @@ export const automatons: Record<string, RobotData> = {
         cowardice, devoid of any semblance of sentience.`,
     tactics: `When spotting a group of Automatons try to spot the Commissar before engaging. Taking them out early is vital in 
         preventing them from calling in reinforcements. Beware its agile jetpack and lethal blades in combat.`,
+
+        image: require('../../assets/automatons/commissar.png'),
   },
   ScoutStrider: {
     name: `Scout Strider`,
@@ -33,6 +38,8 @@ export const automatons: Record<string, RobotData> = {
         pursuit of dominance.`,
     tactics: `Target the Trooper manning the turret or dismantle the legs to immobilize them. Coordinate with your team to unleash 
         coordinated assaults and exploit their vulnerabilities. Their slow turning speed is easily exploited when working together.`,
+
+        image: require('../../assets/automatons/scout-strider.png'),
   },
   Berserker: {
     name: `Berserker`,
@@ -43,6 +50,8 @@ export const automatons: Record<string, RobotData> = {
     tactics: `Keep your distance to evade their brutal melee assaults, while peppering them with ranged firepower to weaken their 
         armor. Target their head or exposed belly with precision strikes to maximize damage. Focus on disabling their chainsaw arms to
         neutralize their primary threat.`,
+
+        image: require('../../assets/automatons/berserker.png'),
   },
   Devastator: {
     name: `Devastator`,
@@ -52,6 +61,8 @@ export const automatons: Record<string, RobotData> = {
         form exudes an aura of unyielding aggression, each movement a testament to its unwavering dedication to crushing all opposition.`,
     tactics: `Despite their slow pace, they pack a punch with heavy weaponry. Target their weak points, like their heads or their 
         legs, with high-caliber weapons to take them down quickly. Disrupt their offensive by aiming for their limbs.`,
+
+        image: require('../../assets/automatons/devastator.png'),
   },
   Hulk: {
     name: `Hulk`,
@@ -62,6 +73,8 @@ export const automatons: Record<string, RobotData> = {
         to crushing all opposition.`,
     tactics: `Target their weak spots with high-caliber ordnance to breach their armor. Focus on their exposed craniums for swift 
         incapacitation. Disrupt their offensive capabilities by targeting their appendages. If all else fails, bring the big guns!`,
+
+        image: require('../../assets/automatons/hulk.png'),
   },
   Tank: {
     name: `Tank`,
@@ -70,6 +83,8 @@ export const automatons: Record<string, RobotData> = {
         menace, a relic of a bygone era repurposed for the Automatons' relentless pursuit of domination.`,
     tactics: `Target it's engines and vents to inflict maximum damage. Their slow speed and reaction times makes them vulnerable to 
         coordinated attacks. Draw out their fire by ducking in and out of cover.`,
+
+        image: require('../../assets/automatons/tank.png'),
   },
   Gunship: {
     name: `Gunship`,
@@ -79,6 +94,8 @@ export const automatons: Record<string, RobotData> = {
         of firepower.`,
     tactics: `Coordinate with your team to split up their attention and draw their fire, allowing positional advances onto the base 
         of the fabricator. Once in position, call in Hellbomb, run for the hills, and watch the sparks fly.`,
+
+        image: require('../../assets/automatons/gunship.png'),
   },
   Dropship: {
     name: `Dropship`,
@@ -87,5 +104,7 @@ export const automatons: Record<string, RobotData> = {
         vessels loom ominously over the battlefield, their sleek and streamlined design hinting at the formidable firepower they 
         carry within.`,
     tactics: `Target their thrusters with high-caliber weaponry to ground them swiftly, but beware of the ensuing explosion.`,
+
+    image: require('../../assets/automatons/dropship.png'),
   },
 };
