@@ -103,24 +103,117 @@ const Map = () => {
             />
           </Svg>
         </View>
-        <View style={styles.sectionContainer}>
-          <Text style={styles.headerText}>Major Order</Text>
-          <Text style={styles.contentText}>Ends {expiryDate}</Text>
-          <Text style={styles.contentText}>{briefing}</Text>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            width: '100%',
+            justifyContent: 'space-evenly',
+            paddingHorizontal: 5,
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+            }}
+          >
+            <Text
+              style={{
+                color: activeColors.textColor,
+                fontWeight: 'bold',
+                fontSize: 18,
+              }}
+            >
+              MAJOR ORDER
+            </Text>
+            <Text
+              style={{
+                color: activeColors.textColor,
+                fontWeight: 'bold',
+                fontSize: 12,
+              }}
+            >
+              Ends {expiryDate}
+            </Text>
+            <Text
+              style={{
+                color: activeColors.textColor,
+                marginTop: 10,
+                fontSize: 14,
+                fontWeight: '500',
+              }}
+            >
+              {task}
+            </Text>
+            <View style={{ width: '100%', paddingTop: 10 }}>
+              <Text
+                style={{
+                  color: activeColors.textColor,
+                  fontWeight: 'bold',
+                  fontSize: 16,
+                }}
+              >
+                Reward
+              </Text>
+              <Text style={{ color: activeColors.textColor }}>
+                {reward} Medals
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+          >
+            <Text
+              style={{
+                color: activeColors.textColor,
+                fontWeight: 'bold',
+                textAlign: 'right',
+              }}
+            >
+              {briefing}
+            </Text>
+          </View>
         </View>
-        {/* <View style={styles.rewardsContainer}>
-  <Text style={styles.headerText}>Task</Text>
-  <Text style={styles.contentText}>{task}</Text>
-</View>
-<View style={styles.rewardsContainer}>
-  <Text style={styles.headerText}>Reward</Text>
-  <Text style={styles.contentText}>{reward}</Text>
-        </View> */}
-        <View style={styles.statsContainer}>
-          <Text style={styles.headerText}>War Stats</Text>
-          <Text style={styles.contentText}>Enemies Killed {kills}</Text>
-          <Text style={styles.contentText}>Helldivers KIA {deaths}</Text>
-          <Text style={styles.contentText}>Bullets Fired {bulletsFired}</Text>
+        <View style={{ marginTop: 30, marginBottom: 15 }}>
+          <Text
+            style={{
+              color: activeColors.textColor,
+              fontWeight: 'bold',
+              fontSize: 20,
+            }}
+          >
+            War Stats
+          </Text>
+        </View>
+        <View style={{ gap: 10 }}>
+          <Text
+            style={{
+              color: activeColors.textColor,
+              fontWeight: 'bold',
+              fontSize: 15,
+            }}
+          >
+            Bullets Fired: {bulletsFired}
+          </Text>
+          <Text
+            style={{
+              color: activeColors.textColor,
+              fontWeight: 'bold',
+              fontSize: 15,
+            }}
+          >
+            Kills: {kills}
+          </Text>
+          <Text
+            style={{
+              color: activeColors.textColor,
+              fontWeight: 'bold',
+              fontSize: 15,
+            }}
+          >
+            Helldivers KIA: {deaths}
+          </Text>
         </View>
       </ScrollView>
     </View>
